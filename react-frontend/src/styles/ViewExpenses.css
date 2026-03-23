@@ -1,0 +1,308 @@
+.expenses-page {
+  position: fixed;      /* fixed on the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;          /* adjust as needed */
+  height: 100vh;
+  padding: 20px;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  box-sizing: border-box;
+}
+
+.expenses-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Page title */
+.expenses-page h2 {
+  margin: 0;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.table-wrapper {
+  max-height: 95vh;
+  overflow-y: auto;             /* vertical scroll inside table */
+  overflow-x: hidden;           /* prevent horizontal scroll */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overscroll-behavior: none;  /* prevents bounce scroll effect */
+  /* remove position: fixed */
+}
+
+.expenses-table {
+  width: 100%;                  /* fit container */
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Table header sticky */
+.expenses-table thead {
+  background: #4f46e5;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Table cells */
+.expenses-table th,
+.expenses-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;   /* new vertical line */
+  text-align: left;
+}
+
+
+/* Remove the last vertical border on the last column */
+.expenses-table th:last-child,
+.expenses-table td:last-child {
+  border-right: none;
+}
+
+/* Alternate row colors */
+.expenses-table tbody tr:nth-child(even) {
+  background: #f5f5f5;
+}
+
+/* Hover effect */
+.expenses-table tbody tr:hover {
+  background: #e0e7ff;
+  transition: background 0.2s ease;
+}
+
+.download-btn {
+  margin-left: auto;
+  padding: 8px 30px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 17px;
+  font-weight: 900px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 20px;
+}
+
+.download-btn:hover {
+  background: #15803d;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 10px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background: #3b82f6; /* blue */
+}
+
+.edit-btn:hover {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444; /* red */
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0,0,0,0.6); /* darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 320px;
+    
+}
+
+.modal .form-group{
+    margin-bottom:16px;
+}
+
+.modal .form-group label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+    font-weight:600;
+    color:#333;
+}
+
+.modal .form-group input,
+.modal .form-group select{
+    width:100%;
+    padding:8px 10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+    outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal .form-group input:focus,
+.modal .form-group select:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 0 2px rgba(79,70,229,0.15);
+}
+
+.modal-buttons{
+    margin-top:18px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.modal-buttons button{
+    padding:7px 14px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.modal-buttons button:first-child{
+    background:#4f46e5;
+    color:white;
+}
+
+.modal-buttons button:last-child{
+    background:#ef4444;
+    color:white;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Filters container */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+    align-items: center;
+}
+
+/* Inputs + select styling */
+.filters input,
+.filters select {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+/* Focus effect */
+.filters input:focus,
+.filters select:focus {
+    border-color: #4a90e2;
+}
+
+/* Table spacing */
+.spaced-table {
+    margin-top: 20px;
+}
+
+/* Optional: make search input wider */
+.filters input[type="text"] {
+    min-width: 200px;
+}
+
+/* Optional: responsive */
+@media (max-width: 600px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters input,
+    .filters select {
+        width: 100%;
+    }
+}
+
+/* Group each filter */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Label styling */
+.filter-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Optional: consistent width */
+.filter-group input,
+.filter-group select {
+    min-width: 160px;
+}

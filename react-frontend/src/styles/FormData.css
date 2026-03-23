@@ -1,0 +1,94 @@
+.form-page {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;         /* spacing from top-left */
+  background-color: #f9f9f9; /* or whatever page background you want */
+
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: none;
+}
+
+.form-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;             /* spacing between fields */
+  width: 100%;
+  max-width: 900px;      /* optional limit for wide screens */
+  text-align: left;
+  overscroll-behavior: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-field select {
+  padding: 10px;            /* same as input */
+  border: 1px solid #ccc;   /* match input border */
+  border-radius: 6px;       /* match input border-radius */
+  font-size: 14px;           /* same font size as input */
+  width: 100%;               /* full width of the field */
+  box-sizing: border-box;    /* include padding in width */
+  background-color: white;   /* optional: match input background */
+}
+
+/* button */
+button {
+  padding: 10px 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-start; /* button sticks to left */
+}
+
+button:hover {
+  background: #4338ca;
+}
+
+button:disabled {
+  background: #4338ca;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.required-star {
+  color: red;
+  margin-left: 2px;
+  font-size: 14px; /* smaller than label */
+}
+
+/* Hide error messages by default */
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none; 
+  margin-top: 4px;
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,30 @@
+.recent-transactions {
+   width: 100%;
+  margin-top: 40px;
+  max-width: 800px;
+}
+/* Table base */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* All cells: vertical lines */
+.transactions-table th,
+.transactions-table td {
+  padding: 8px;
+  border-right: 1px solid #ddd; /* vertical line only */
+  border-bottom: 1px solid #ddd; /* horizontal lines initially */
+  text-align: left;
+}
+
+/* Remove horizontal line from last row */
+.transactions-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Remove right border from last column */
+.transactions-table th:last-child,
+.transactions-table td:last-child {
+  border-right: none;
+}
