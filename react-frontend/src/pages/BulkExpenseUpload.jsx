@@ -9,6 +9,8 @@ function BulkExpenseUpload(){
     const [loading,setLoading] = useState(false);
     const fileInputRef = useRef(null);
 
+    const MAX_ROWS = 100;
+
     const handleChange = (e) => {
         const selectedFile = e.target.files[0];
         setFile(selectedFile);
@@ -58,6 +60,10 @@ function BulkExpenseUpload(){
     const handleUpload = async () => {
 
         if(!preview.length) return toast.error("No data to upload");
+        if(preview.length > MAX_ROWS){
+            toast.error(`Upload limit exceeded! Maximum allowed rows: ${MAX_ROWS}`)
+            return;
+        }
         setLoading(true);
 
         try{
@@ -121,9 +127,7 @@ function BulkExpenseUpload(){
                         </table>
                     </div>
                 )}
-        </div>
-
-    );
+        </div>);
 }
 
 export default BulkExpenseUpload;

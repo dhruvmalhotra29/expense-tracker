@@ -71,17 +71,28 @@ class ExpenseViewSet(ModelViewSet):
         if keys:
             redis_client.delete(*keys)
 
+        ml_key = f"ml_insights_{self.request.user.id}"
+        redis_client.delete(ml_key)
+
+
     def perform_update(self, serializer):
         serializer.save()
         keys = redis_client.keys(f"dashboard_{self.request.user.id}_*")
         if keys:
             redis_client.delete(*keys)
 
+        ml_key = f"ml_insights_{self.request.user.id}"
+        redis_client.delete(ml_key)
+
+
     def perform_destroy(self, instance):
         instance.delete()
         keys = redis_client.keys(f"dashboard_{self.request.user.id}_*")
         if keys:
             redis_client.delete(*keys)   
+
+        ml_key = f"ml_insights_{self.request.user.id}"
+        redis_client.delete(ml_key)
 
     @action(detail=False,methods=["get"])
     def download_csv(self, request):
@@ -119,6 +130,12 @@ class BulkExpenseUpload(APIView):
                 status = status.HTTP_400_BAD_REQUEST
                 )
         
+        MAX_ROWS = 100
+        if len(data) > MAX_ROWS:
+            return Response(
+                {"error": f"Maximum {MAX_ROWS} allowed per upload."},
+                status=status.HTTP_400_BAD_REQUEST) 
+        
         success = []
         failed = []
 
@@ -129,6 +146,10 @@ class BulkExpenseUpload(APIView):
                 keys = redis_client.keys(f"dashboard_{self.request.user.id}_*")
                 if keys:
                     redis_client.delete(*keys)
+
+                ml_key = f"ml_insights_{self.request.user.id}"
+                redis_client.delete(ml_key)
+
                 success.append(serializer.data)
             else:
                 failed.append({"row":i,"errors":serializer.errors})
