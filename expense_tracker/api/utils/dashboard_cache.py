@@ -5,6 +5,9 @@ from datetime import datetime
 from django.conf import settings
 import redis
 import json
+import logging
+
+logger = logging.getLogger(__name__)
 
 redis_client = redis.Redis(
     host=settings.REDIS_CONFIG['HOST'],
@@ -16,7 +19,7 @@ redis_client = redis.Redis(
 def get_pie_chart_data(user):
     queryset = Expense.objects.filter(user=user).values("category").annotate(total=Sum("amount"))
     return [
-        {"category": item["category"], "total": float(item["total"])}
+        {"category": item["category"], "total": float(item["total"] or 0)}
         for item in queryset
     ]
 
@@ -43,7 +46,7 @@ def get_bar_graph_data(user,year):
     month_data = {i: 0 for i in range(1,13)}
     
     for expense in expenses:
-        month_data[expense["month"]] = float(expense["total"])
+        month_data[expense["month"]] = float(expense["total"] or 0)
 
     return [
         {
@@ -75,4 +78,16 @@ def refresh_dashboard_cache(user, year=None):
         "recent_transactions": get_recent_expenses(user)
     }
 
-    redis_client.set(f"dashboard_{user.id}_{year}",json.dumps(data), ex=86400)
+    try:
+        redis_client.set(f"dashboard_{user.id}_{year}",json.dumps(data), ex=86400)
+    except Exception:
+        logger.warning("Redis set failed for dashboard",exc_info=True)
+
+def clear_dashboard_cache(user_id):
+
+    try:
+        keys = redis_client.keys(f"dashboard_{user_id}_*")
+        if keys:
+            redis_client.delete(*keys)
+    except Exception:
+        logger.warning("Redis cache clear failed for dashboard", exc_info=True)

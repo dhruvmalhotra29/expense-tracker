@@ -9,6 +9,9 @@ import json
 import numpy as np
 import calendar
 import redis
+import logging
+
+logger = logging.getLogger(__name__)
 
 redis_client = redis.Redis(
                     host=settings.REDIS_CONFIG['HOST'],
@@ -29,12 +32,16 @@ def get_expense_prediction(user):
 
     for item in data:
         months.append(item["month"].month)
-        totals.append(item["total"])
+        totals.append(item["total"] or 0)
 
     if len(months) < 2:
         return {"message":"Not enough data for prediction"}
     
-    last_expense = Expense.objects.filter(user=user).latest("date")
+    last_expense = Expense.objects.filter(user=user).order_by("-date").first()
+    
+    if not last_expense:
+        return {"message":"No data available"}
+        
     last_month_num = last_expense.date.month 
     last_month_year = last_expense.date.year
 
@@ -153,12 +160,7 @@ def get_budget_recommendation(user):
         "recommended_budget": float(round(recommended_budget,2))
     }
 
-def get_ml_insights(user):
-    redis_key = f"ml_insights_{user.id}"
-
-    cached_data = redis_client.get(redis_key)
-    if cached_data:
-        return json.loads(cached_data)
+def refresh_ml_insights(user):
     
     data = {
         "prediction": get_expense_prediction(user),
@@ -167,6 +169,15 @@ def get_ml_insights(user):
         "budget" : get_budget_recommendation(user)
     }
 
-    redis_client.setex(redis_key, 3600, json.dumps(data))
+    try:
+        redis_client.setex(f"ml_insights_{user.id}", 3600, json.dumps(data))
+    except Exception:
+        logger.warning("Redis set failed for ml insights.",exc_info=True)
 
-    return data
+
+def clear_ml_insights_cache(user_id):
+    try:
+        ml_key = f"ml_insights_{user_id}"
+        redis_client.delete(ml_key)
+    except Exception:
+        logger.warning("Redis cache clear failed for ml insights",exc_info=True)

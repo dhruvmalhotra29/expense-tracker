@@ -112,6 +112,32 @@ REDIS_CONFIG = {
     "DB": 0,
 }
 
+import os
+LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {"format": "[{asctime}] {levelname} {name}: {message}", "style": "{"}
+    },
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": LOG_FILE,  # path to your log file
+            "formatter": "verbose",
+        }
+    },
+    "loggers": {
+        "": {  # root logger
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
+        }
+    }
+}
+
 #    'default': {
  #       'ENGINE': 'django.db.backends.sqlite3',
   #      'NAME': BASE_DIR / 'db.sqlite3',
