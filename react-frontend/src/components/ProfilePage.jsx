@@ -23,6 +23,7 @@ function ProfilePage(){
   useEffect(() => {
     const fetchProfile = async () => {
         try {
+            console.log("Fetching profile details...");
             const res = await api.get("/profile-update/");
             setFormdata({
                 username: res.data.username || "",
@@ -58,6 +59,7 @@ function ProfilePage(){
 
         try{
             setIsSubmit(true);
+            console.log("Updating profile...");
             await api.put("/profile-update/",formData);
             toast.success("Profile updated successfully!")
 
@@ -114,4 +116,5 @@ function ProfilePage(){
             </div>
     )
 }
+
 export default ProfilePage;

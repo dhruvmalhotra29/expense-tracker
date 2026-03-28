@@ -46,10 +46,11 @@ function AddExpense(){
             }
         });
 
-        if (!isValid) return; // Don't call the api as manadatory fields are missing
+        if (!isValid) return; // Don't call the api as mandatory fields are missing
 
         try{
             setIsSubmit(true);
+            console.log("Submitting expense details...",formData);
             await api.post("/expenses/",formData);
             toast.success("Expense added successfully!")
 

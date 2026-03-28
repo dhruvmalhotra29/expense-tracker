@@ -10,6 +10,7 @@ function ProfileMenu() {
   const username = getUsername();
 
   const handleLogout = () => {
+    console.info("User logged out:",username);
     logout();
     navigate("/", { replace: true });
   };

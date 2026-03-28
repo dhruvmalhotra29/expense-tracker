@@ -29,8 +29,10 @@ function MLInsightPage() {
 
     const fetchData = async () => {
         setLoading(true);
+        console.log("Fetching ML Insights");
         try{
             const ml_insights = await api.get("/ml-insights")
+            console.log("ML Insights fetched successfully",ml_insights.data);
 
             setPrediction(ml_insights.data.prediction);
             setTrend(ml_insights.data.trend);
@@ -38,6 +40,7 @@ function MLInsightPage() {
             setBudget(ml_insights.data.budget);
 
         } catch (err) {
+            console.error("Error fetching ML Insights", err);
             setError(true);
             setLoading(false);  
         } finally {
@@ -50,6 +53,7 @@ function MLInsightPage() {
     },[]);
 
     if (loading){
+        console.log("Loading ML Insight Page");
         return (
             <div className="ml-page">
                 <h2 className="ml-header">ML Insights</h2>
@@ -64,6 +68,7 @@ function MLInsightPage() {
     } 
 
     if(error){
+        console.error("ML Insight Page rendering error: Failed to load page");
         return (
         <div className="ml-page">
             <h2 className="ml-header">ML Insights</h2>

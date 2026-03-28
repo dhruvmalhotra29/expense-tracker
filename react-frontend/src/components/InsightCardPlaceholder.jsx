@@ -1,5 +1,3 @@
-import React from "react";
-
 const InsightCardPlaceholder = ({ type }) => {
   // Placeholder height/width based on card type
   let figureHeight = "24px";       // default

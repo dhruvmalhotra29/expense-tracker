@@ -21,16 +21,17 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchYears = async () => {
+      console.log("Fetching avaialble years bar graph filtering...");
       try {
         const res = await api.get("expenses/available-years/");
-        console.log(res.data)
+        console.log("Available years fetched for dashboard:  ",res.data);
         setYears(res.data);
 
         if(res.data.length > 0){
           setSelectedYear(res.data[0]); // latest by default
         }
       } catch (err) {
-        console.log("Failed to fetch years.")
+        console.error("Failed to fetch available years for dashboard.",err);
         setError(true);
         setLoading(false);
       }
@@ -41,11 +42,14 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchDashboard = async () => {
+      console.log("Fetching Dashboard data....");
       try{
         const res = await api.get(`/dashboard/?year=${selectedYear}`);
+        console.log("Dashboard data fetched successfully: ");
         setDashboardData(res.data);
         setError(false);
       } catch (err) {
+        console.error("Failed to fetch dashboard data. Error occured: ",err);
         setError(true);
       }
       finally {
@@ -58,6 +62,7 @@ function Dashboard() {
   
 
   if (loading) {
+    console.log("Loading Dashboard data...");
     return (
       <div className="dashboard-container">
         <div className="dashboard-topbar">
@@ -82,6 +87,7 @@ function Dashboard() {
       </div>
     );
   }
+
   if (error){
     return (
       <div className="dashboard-container">
