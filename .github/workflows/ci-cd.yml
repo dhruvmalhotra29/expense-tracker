@@ -30,7 +30,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://testuser:testpass@localhost:5432/testdb
+      DATABASE_URL: postgres://testuser:testpass@postgres:5432/testdb
 
     steps:
       - name: Checkout code
