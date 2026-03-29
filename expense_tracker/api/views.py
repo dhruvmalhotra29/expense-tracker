@@ -7,6 +7,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from django.http import HttpResponse
 from datetime import datetime
 from django.db.models.functions import ExtractYear
@@ -44,9 +45,13 @@ class LoginView(APIView):
         logger.warning(f"Login failed: {serializer.errors}")
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class ExpensePagination(PageNumberPagination):
+    page_size = 15
+
 class ExpenseViewSet(ModelViewSet):
     serializer_class = ExpenseSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = ExpensePagination
 
     def get_queryset(self):
 
