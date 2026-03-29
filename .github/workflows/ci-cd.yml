@@ -47,6 +47,13 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Wait for Postgres
+        run: |
+          until pg_isready -h postgres -U testuser -d testdb; do
+            echo "Waiting for Postgres..."
+            sleep 2
+          done
+
       - name: Run backend tests
         run: |
           cd expense_tracker
