@@ -1,4 +1,4 @@
-name: Expense Tracker CI/CD (Windows)
+name: Expense Tracker CI/CD
 
 on:
   push:
@@ -12,9 +12,25 @@ jobs:
 
     services:
       redis:
-        image: redis
+        image: redis:7
         ports:
           - 6379:6379
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: testuser
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U testuser -d testdb"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgres://testuser:testpass@localhost:5432/testdb
 
     steps:
       - name: Checkout code
