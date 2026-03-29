@@ -93,16 +93,27 @@ WSGI_APPLICATION = 'expense_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+from dotenv import load_dotenv
+import dj_database_url
+
+# Load .env from project root
+load_dotenv()
+
 DATABASES = {
-    'default' :{
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'expense_db',
-        'USER': 'postgres',
-        'PASSWORD': 'pgsql_dhruv',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='postgres://postgres:@localhost:5432/expense_db'
+    )
 }
+
+#DATABASES = {
+ #   'default' :{
+  #     'NAME': 'expense_db',
+    #    'USER': 'postgres',
+   #     'PASSWORD': 'pgsql_dhruv',
+    #    'HOST': 'localhost',
+     #   'PORT': '5432',
+   # }
+#}
 
 REDIS_CONFIG = {
     "HOST": "127.0.0.1",
