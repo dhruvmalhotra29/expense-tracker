@@ -19,8 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h$6+$==x=%ka@_6sn0=jj&v+@#bwuyi^!1pwx8ans=b+jy(#=!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -95,25 +93,19 @@ WSGI_APPLICATION = 'expense_tracker.wsgi.application'
 
 from dotenv import load_dotenv
 import dj_database_url
+import os
 
 # Load .env from project root
 load_dotenv()
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://postgres:@localhost:5432/expense_db'
     )
 }
-
-#DATABASES = {
- #   'default' :{
-  #     'NAME': 'expense_db',
-    #    'USER': 'postgres',
-   #     'PASSWORD': 'pgsql_dhruv',
-    #    'HOST': 'localhost',
-     #   'PORT': '5432',
-   # }
-#}
 
 REDIS_CONFIG = {
     "HOST": "127.0.0.1",
