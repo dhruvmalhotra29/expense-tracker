@@ -86,11 +86,6 @@ function Login(){
           <button className="button" type="submit">Login</button>
 
         </form>
-
-        <div className="login-footer">
-          Don't have an account? <span>Sign up</span>
-        </div>
-
       </div>
 
     </div>
