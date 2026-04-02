@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../api/axiosInstance";
 import "../styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -33,10 +33,11 @@ function Login(){
     if(!isValid) return;
 
     try{
-      const result = await axios.post("http://localhost:8000/api/auth/login",{
+      const result = await api.post("/auth/login",{
         username,
         password
       });
+
       // Save username & password
       localStorage.setItem("token",result.data.access);
       localStorage.setItem("username",username);
