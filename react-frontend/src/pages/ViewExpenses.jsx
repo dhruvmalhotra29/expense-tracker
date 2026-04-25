@@ -3,6 +3,7 @@ import api from "../api/axiosInstance";
 import { toast } from "react-toastify";
 import Loader from "../components/common/Loader.jsx";
 import ErrorMessage from "../components/common/ErrorMessage.jsx";
+import { useUI } from "../context/uiContext.jsx";
 import "../styles/ViewExpenses.css";
 
 function ViewExpenses()
@@ -11,6 +12,7 @@ function ViewExpenses()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentExpense, setCurrentExpense] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
+    const { setModalOpen } = useUI();
 
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -82,6 +84,7 @@ function ViewExpenses()
     const handleEditClick = (expense) => {
         setCurrentExpense(expense);
         setIsModalOpen(true);
+        setModalOpen(true);
     };
 
     const handleSaveEdit = async () => {
@@ -92,6 +95,7 @@ function ViewExpenses()
                                     note: currentExpense.note,});
             setExpenses(prev => prev.map(exp => exp.id === res.data.id? res.data : exp));
             setIsModalOpen(false);
+            setModalOpen(false);
             setCurrentExpense(null);
             toast.success("Expense updated successfully");
         } catch (err) {
@@ -198,7 +202,7 @@ function ViewExpenses()
                                     <td>{expense.note}</td>
                                     <td>
                                         <button className="edit-btn" onClick={() => handleEditClick(expense)}>Edit</button>
-                                        <button className="delete-btn" onClick={() => setDeleteId(expense.id)}>Delete</button>
+                                        <button className="delete-btn" onClick={() => {setDeleteId(expense.id); setModalOpen(true);}}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
@@ -217,6 +221,7 @@ function ViewExpenses()
             { isModalOpen && (
                     <div className="modal-backdrop">
                         <div className="modal">
+                            <button className="modal-close" onClick={() => {setIsModalOpen(false); setModalOpen(false);}}>x</button>
                             <h3>Edit Expense</h3>
 
                             <div className="form-group">
@@ -250,7 +255,7 @@ function ViewExpenses()
                             
                             <div className="modal-buttons">
                                 <button onClick={handleSaveEdit}>Save</button>
-                                <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+                                <button onClick={() => {setIsModalOpen(false); setModalOpen(false);}}>Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -258,6 +263,7 @@ function ViewExpenses()
                 {deleteId && (
                     <div className="modal-backdrop">
                         <div className="modal">
+                            <button className="modal-close" onClick={() => {setDeleteId(null); setModalOpen(false);}}>x</button>
                             <h3>Confirm Delete</h3>
                             <p>This action cannot be undone. Are you sure?</p>
 
@@ -266,17 +272,17 @@ function ViewExpenses()
                                 onClick={() => {
                                     handleDelete(deleteId);
                                     setDeleteId(null);
+                                    setModalOpen(false);
                                     }}>Yes, Delete
                                 </button>
 
-                                <button onClick={() => setDeleteId(null)}>
+                                <button onClick={() => {setDeleteId(null); setModalOpen(false);}}>
                                     Cancel
                                 </button>
                             </div>
                         </div>
                     </div>
                     )}
-
         </div>)
 };
 

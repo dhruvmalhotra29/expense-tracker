@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/common.css"
 import MLInsightPage from "./pages/MLInsightPage";
+import { UIProvider } from "./context/uiContext";
 
 function App(){
 
@@ -30,7 +31,7 @@ function App(){
         </Route>
         <Route path="*" element={<NotFound />}/>
       </Routes>
-    </BrowserRouter>
+  </BrowserRouter>
   );
 }
 

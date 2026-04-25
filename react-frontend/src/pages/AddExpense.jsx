@@ -26,7 +26,6 @@ function AddExpense(){
         setIsDisable(true);
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,6 +43,17 @@ function AddExpense(){
             } else {
             error.style.display = "none";  // hide if filled
             }
+        });
+
+        inputs.forEach(input => {
+            const error = input.nextElementSibling;
+            if (!error) return;
+
+            input.addEventListener("input", () => {
+                if (input.value.trim() !== "") {
+                    error.style.display = "none";
+                }
+            });
         });
 
         if (!isValid) return; // Don't call the api as mandatory fields are missing

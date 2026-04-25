@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUsername, logout } from "../utils/auth";
+import { useUI } from "../context/uiContext";
 import "../styles/Dashboard.css";
 
 function ProfileMenu() {
@@ -8,6 +9,7 @@ function ProfileMenu() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   const username = getUsername();
+  const { modalOpen } = useUI();
 
   const handleLogout = () => {
     console.info("User logged out:",username);
@@ -27,7 +29,7 @@ function ProfileMenu() {
   }, []);
 
   return (
-    <div className="profile-menu-wrapper" ref={menuRef}>
+    <div className="profile-menu-wrapper" ref={menuRef} style={{pointerEvents: modalOpen ? "none" : "auto", opacity: modalOpen ? 0.4 : 1}}>
       <button className="profile-avatar-btn" onClick={() => setOpen(p => !p)}>
         {username?.[0]?.toUpperCase() || "U"}
       </button>
