@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import ViewExpenses from "./ViewExpenses";
 import api from "../api/axiosInstance";
 import { vi } from "vitest";
+import { UIProvider } from "../context/uiContext";
 
 vi.mock("../api/axiosInstance");
 
@@ -26,7 +27,9 @@ describe("ViewExpenses", () => {
       },
     });
 
-    render(<ViewExpenses />);
+    render(<UIProvider>
+            <ViewExpenses />
+            </UIProvider>);
 
     // wait for data to appear
     expect(await screen.findByRole("cell", {name:"Food"})).toBeInTheDocument();
