@@ -53,11 +53,14 @@ describe("ViewExpenses", () => {
     await screen.findByRole("cell", {name: "Food"});
 
     // click delete button
-    fireEvent.click(screen.getByText(/delete/i));
+    fireEvent.click(
+      screen.getByRole("button", { name: /^Delete$/i })
+    );
 
     // confirm delete
-    fireEvent.click(screen.getByText(/yes, delete/i));
-
+    fireEvent.click(
+      await screen.findByRole("button", { name: /yes, delete/i })
+    );
     await waitFor(() => {
       expect(api.delete).toHaveBeenCalledWith("/expenses/1/");
     });
