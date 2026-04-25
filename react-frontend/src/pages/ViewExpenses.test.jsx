@@ -47,7 +47,9 @@ describe("ViewExpenses", () => {
 
     api.delete.mockResolvedValue({});
 
-    render(<ViewExpenses />);
+    render(<UIProvider>
+            <ViewExpenses />
+            </UIProvider>);
 
     // wait for row
     await screen.findByRole("cell", {name: "Food"});
