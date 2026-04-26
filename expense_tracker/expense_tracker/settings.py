@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -93,7 +95,6 @@ WSGI_APPLICATION = 'expense_tracker.wsgi.application'
 
 from dotenv import load_dotenv
 import dj_database_url
-import os
 
 # Load .env from project root
 load_dotenv()
@@ -117,7 +118,6 @@ REDIS_CONFIG = {
     "DB": 0,
 }
 
-import os
 LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
 
 LOGGING = {
