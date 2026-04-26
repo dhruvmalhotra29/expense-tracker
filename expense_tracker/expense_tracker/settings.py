@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["127.0.0.1","localhost"]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost,127.0.0.1").split(",")
+#ALLOWED_HOSTS = ["127.0.0.1","localhost"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # React dev port
