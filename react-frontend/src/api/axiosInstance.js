@@ -3,7 +3,8 @@ import { getToken } from "../utils/auth";
 import { toast } from "react-toastify";
 
 const api = axios.create({
-    baseURL: "http://127.0.0.1:8000/api"
+ //   baseURL: "http://127.0.0.1:8000/api"
+      baseURL: import.meta.env.VITE_API_URL
 });
 
 api.interceptors.request.use((config) => {
