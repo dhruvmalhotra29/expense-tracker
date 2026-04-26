@@ -6,7 +6,7 @@ import AddExpense from "./pages/AddExpense";
 import BulkExpenseUpload from "./pages/BulkExpenseUpload";
 import ProfilePage from "./components/ProfilePage";
 import ProfileMenu from "./components/ProfileMenu";
-import NotFound from "./pages/Notfound";
+import NotFound from "./pages/NotFound";
 import PrivateRoute from "./routes/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
