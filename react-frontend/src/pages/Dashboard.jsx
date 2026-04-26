@@ -176,7 +176,7 @@ function Dashboard() {
         </div>
 
       </div>
-      <div style={{ display: "flex", gap: 40, marginTop: 10}}>
+      <div style={{ display: "flex", gap: 20, marginTop: 10}}>
         <div className="chart-container">
           <ExpensePieChart data={dashboard_data.pie_chart}/>
         </div>

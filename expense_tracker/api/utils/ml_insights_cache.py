@@ -8,15 +8,16 @@ from django.conf import settings
 import json
 import numpy as np
 import calendar
-import redis
+from .redis_client import redis_client
+#import redis
 import logging
 
 logger = logging.getLogger(__name__)
 
-redis_client = redis.Redis(
-                    host=settings.REDIS_CONFIG['HOST'],
-                    port=settings.REDIS_CONFIG['PORT'],
-                    db=settings.REDIS_CONFIG['DB'],)
+#redis_client = redis.Redis(
+ #                   host=settings.REDIS_CONFIG['HOST'],
+  #                  port=settings.REDIS_CONFIG['PORT'],
+   #                 db=settings.REDIS_CONFIG['DB'],)
 
 def get_expense_prediction(user):
     data = (

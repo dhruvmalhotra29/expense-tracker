@@ -10,20 +10,20 @@ function ExpensePieChart({ data }){
     }
 
     return (
-    <div style={{ width: 500 }}>
+    <div style={{width:500}}>
         <h2>Category Summary</h2>
 
-        <PieChart width={540} height={350}  margin={{ top: 20, right: 180, bottom: 50, left: 180 }}>
+        <PieChart width={550} height={400}  margin={{ top: 170, right: 10, bottom: 30, left: 70 }}>
         <Pie
             data={data}
             dataKey="total"
             nameKey="category"
             cx="40%"
             cy="50%"
-            outerRadius={90}
+            outerRadius={110}
             label={({ category, total }) => `${category} (${total})`}
             labelLine={true}
-            minAngle={3}
+            minAngle={5}
         >
             {data.map((entry, index) => (
             <Cell key={index} fill={COLORS[index % COLORS.length]} />
@@ -31,8 +31,8 @@ function ExpensePieChart({ data }){
         </Pie>
 
         <Tooltip formatter={(value) => [`${value}`, "Amount"]} />
-        <Legend verticalAlign="bottom" />
-        </PieChart>
+       <Legend verticalAlign="bottom" wrapperStyle={{ paddingTop: "250px" }}/> 
+      </PieChart>
     </div>
     );
 }

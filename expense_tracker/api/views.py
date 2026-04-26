@@ -14,16 +14,19 @@ from django.db.models.functions import ExtractYear
 from .utils.dashboard_cache import refresh_dashboard_cache, clear_dashboard_cache
 from .utils.ml_insights_cache import refresh_ml_insights, clear_ml_insights_cache
 from django.conf import settings
-import redis
+from .utils.redis_client import redis_client
+#import redis
 import json
 import csv
 import logging
 
-redis_client = redis.Redis(
-    host = settings.REDIS_CONFIG['HOST'],
-    port = settings.REDIS_CONFIG['PORT'],
-    db = settings.REDIS_CONFIG['DB'],
-)
+
+
+#redis_client = redis.Redis(
+#    host = settings.REDIS_CONFIG['HOST'],
+#    port = settings.REDIS_CONFIG['PORT'],
+#    db = settings.REDIS_CONFIG['DB'],
+#)
 
 # Create a logger for this view
 logger = logging.getLogger(__name__)

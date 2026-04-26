@@ -212,6 +212,11 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  margin-left: 180px;
+}
+
+.chart-header h2{
+  white-space: nowrap;
 }
 
 .chart-header h3 {
@@ -230,6 +235,7 @@
 .year-filter label {
   font-weight: 500;
   color: #555;
+  margin-left: 100px;
 }
 
 .year-filter select {

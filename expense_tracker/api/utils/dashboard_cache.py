@@ -3,17 +3,18 @@ from django.db.models.functions import ExtractMonth
 from ..models import Expense
 from datetime import datetime
 from django.conf import settings
-import redis
+from .redis_client import redis_client
+#import redis
 import json
 import logging
 
 logger = logging.getLogger(__name__)
 
-redis_client = redis.Redis(
-    host=settings.REDIS_CONFIG['HOST'],
-    port=settings.REDIS_CONFIG['PORT'],
-    db=settings.REDIS_CONFIG['DB'],
-    )
+#redis_client = redis.Redis(
+#    host=settings.REDIS_CONFIG['HOST'],
+#    port=settings.REDIS_CONFIG['PORT'],
+#    db=settings.REDIS_CONFIG['DB'],
+#    )
 
 # Helper functions
 def get_pie_chart_data(user):

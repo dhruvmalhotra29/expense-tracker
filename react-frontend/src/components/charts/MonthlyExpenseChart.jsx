@@ -22,10 +22,10 @@ function MonthlyExpenseChart({ data }){
     }
 
     return (
-        <div style={{width:700}}>
+        <div style={{width:700, marginLeft:"150px"}}>
             <ResponsiveContainer width="150%" height={350}>
-                <BarChart data={data} barCategoryGap="30%"  margin={{ top: 30, right: 20, left: 90, bottom: 30 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
+                <BarChart data={data} barCategoryGap="30%"  margin={{ top: 30, right: 20, left: 20, bottom: 30 }}>
+                    <CartesianGrid strokeDasharray="5 3" />
                     <XAxis  dataKey="month" label={{ value: "Month →", position:"insideBottom", offset: -5, dy:20}}/>
                     <YAxis label={{value:"Cost (₹) →", angle: -90, position:"insideLeft", dx: -15}} />
                     <Tooltip formatter={(value) => [`₹${value}`, "Amount"]} />

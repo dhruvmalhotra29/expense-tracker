@@ -102,10 +102,14 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://postgres:@localhost:5432/expense_db'
-    )
+    "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
 }
+
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default='postgres://postgres:@localhost:5432/expense_db'
+#    )
+#}
 
 REDIS_CONFIG = {
     "HOST": "127.0.0.1",
