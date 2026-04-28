@@ -128,16 +128,23 @@ LOGGING = {
         "verbose": {"format": "[{asctime}] {levelname} {name}: {message}", "style": "{"}
     },
     "handlers": {
-        "file": {
+  #      "file": {
+   #         "level": "INFO",
+    #        "class": "logging.FileHandler",
+     #       "filename": LOG_FILE,  # path to your log file
+   #         "formatter": "verbose",
+    #    },
+        "console" : {
             "level": "INFO",
-            "class": "logging.FileHandler",
-            "filename": LOG_FILE,  # path to your log file
-            "formatter": "verbose",
+            "class" : "logging.StreamHandler",
+            "formatter" : "verbose"
         }
     },
+
     "loggers": {
         "": {  # root logger
-            "handlers": ["file"],
+           # "handlers": ["file"],
+            "handlers": ["console"],
             "level": "INFO",
             "propagate": True,
         }
