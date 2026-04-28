@@ -38,9 +38,9 @@ class RedisClient:
         if not keys:
             return 0
 
-        # Upstash expects comma-separated or multiple calls
+        # Upstash expects keys as path segments (/del/key1/key2), not comma-separated
         res = requests.get(
-            f"{self.url}/del/{','.join(keys)}",
+            f"{self.url}/del/" + "/".join(keys),
             headers=self.headers
         ).json()
 
