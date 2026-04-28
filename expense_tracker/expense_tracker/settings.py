@@ -119,7 +119,7 @@ DATABASES = {
 #    "DB": 0,
 #}
 
-LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
+#LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
 
 LOGGING = {
     "version": 1,
@@ -128,23 +128,23 @@ LOGGING = {
         "verbose": {"format": "[{asctime}] {levelname} {name}: {message}", "style": "{"}
     },
     "handlers": {
-        "file": {
+  #      "file": {
+   #         "level": "INFO",
+    #        "class": "logging.FileHandler",
+     #       "filename": LOG_FILE,  # path to your log file
+   #         "formatter": "verbose",
+    #    },
+        "console" : {
             "level": "INFO",
-            "class": "logging.FileHandler",
-            "filename": LOG_FILE,  # path to your log file
-            "formatter": "verbose",
-        },
-   #     "console" : {
-    #        "level": "INFO",
-     #       "class" : "logging.StreamHandler",
-      #      "formatter" : "verbose"
-       # }
+            "class" : "logging.StreamHandler",
+            "formatter" : "verbose"
+        }
     },
 
     "loggers": {
         "": {  # root logger
-            "handlers": ["file"],
-          #  "handlers": ["console"],
+           # "handlers": ["file"],
+            "handlers": ["console"],
             "level": "INFO",
             "propagate": True,
         }
