@@ -77,13 +77,16 @@ function Login(){
 
         <form onSubmit={handleLogin} noValidate>
 
+          <label className="input-label">Username</label>
           <input className="input-field" placeholder="Username"
             value={username} onChange={e => setUsername(e.target.value)} required/>
           <span className="error-message"> Username is required</span>
 
+          <label className="input-label">Password</label>
           <input className="input-field" type="password" placeholder="Password"
             value={password} onChange={e => setPassword(e.target.value)} required/>
           <span className="error-message">Password is required</span>
+          
           <button className="button" type="submit">Login</button>
 
         </form>

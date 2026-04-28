@@ -140,9 +140,9 @@ function Dashboard() {
       return (
       <div className="dashboard-container">
         <div className="dashboard-topbar">
-          <h1>Expense Tracker dashbnoard</h1>
+          <h1>Expense Tracker dashboard</h1>
         </div>
-        <EmptyState message="No dashboard data avialable" />
+        <EmptyState message="No dashboard data available" />
       </div>
     );
   }
