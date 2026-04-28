@@ -88,6 +88,7 @@ def clear_dashboard_cache(user_id):
 
     try:
         keys = redis_client.keys(f"dashboard_{user_id}_*")
+        logger.info(f"Redis keys to be deleted: {keys}")
         if keys:
             redis_client.delete(*keys)
     except Exception:
