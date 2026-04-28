@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost,127.0.0.1").split(",")
+#ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost,127.0.0.1").split(",")
 #ALLOWED_HOSTS = ["127.0.0.1","localhost"]
 
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS","http://localhost:5173").split(",")
@@ -113,13 +113,13 @@ DATABASES = {
 #    )
 #}
 
-REDIS_CONFIG = {
-    "HOST": "127.0.0.1",
-    "PORT": 6379,
-    "DB": 0,
-}
+#REDIS_CONFIG = {
+#    "HOST": "127.0.0.1",
+#    "PORT": 6379,
+#    "DB": 0,
+#}
 
-LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
+#LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
 
 LOGGING = {
     "version": 1,
