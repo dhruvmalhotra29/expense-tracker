@@ -5,10 +5,11 @@
   top:0;
   left: 0; 
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   padding: 0 80px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 /* left text area */
@@ -168,20 +169,24 @@
 }
 
 /* responsive */
-@media (max-width: 900px) {
-  .login-page {
-    padding: 0 30px;
+@media (max-width:900px){
+  .login-page{
+    padding:20px;
   }
 
-  .login-divider {
-    display: none;
+  .login-info{
+    display:flex;
+    padding-right:40px;
+    flex:1;
   }
 
-  .login-info {
-    display: none;
+  .login-divider{
+    display:block;
+    margin:0 25px;
   }
 
-  .login-form-area {
-    max-width: 100%;
+  .login-form-area{
+    flex:1;
+    max-width:none;
   }
 }

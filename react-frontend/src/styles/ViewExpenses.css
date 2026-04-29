@@ -86,7 +86,7 @@
   border: none;
   border-radius: 6px;
   font-size: 17px;
-  font-weight: 900px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 20px;
@@ -318,4 +318,25 @@
 .filter-group input,
 .filter-group select {
     min-width: 160px;
+}
+
+@media (max-width:768px){
+  .expenses-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .download-btn{
+    margin-left:0;
+    width:100%;
+    max-width:250px;
+  }
+
+  .table-wrapper{
+    overflow-x:auto;
+  }
+
+  .expenses-table{
+    min-width:700px;
+  }
 }

@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   background: #f4f6f8;
-  overflow: hidden;
+  overflow-y: auto;
   overscroll-behavior: none;
 }
 
@@ -90,4 +90,22 @@
 .page-message.empty {
   background: #f9f9f9;
   color: #777;
+}
+
+@media (max-width: 768px){
+  .ml-page{
+    padding:15px;
+  }
+
+  .ml-grid-2x2{
+    grid-template-columns: 1fr; /* stack cards */
+  }
+
+  .ml-header{
+    font-size:22px;
+  }
+
+  .ml-card h1{
+    font-size:28px;
+  }
 }

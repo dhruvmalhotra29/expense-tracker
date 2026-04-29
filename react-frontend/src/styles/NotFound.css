@@ -50,3 +50,18 @@
   background: #3730a3;
   transform: translateY(-2px);
 }
+
+@media (max-width:768px){
+  .notfound-content h1{
+    font-size:64px;
+  }
+
+  .notfound-content p{
+    font-size:16px;
+  }
+
+  .back-home-btn{
+    width:100%;
+    max-width:250px;
+  }
+}

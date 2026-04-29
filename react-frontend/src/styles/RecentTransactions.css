@@ -28,3 +28,14 @@
 .transactions-table td:last-child {
   border-right: none;
 }
+
+@media (max-width:768px){
+  .recent-transactions{
+    margin-top:50px;
+    overflow-x:auto;
+  }
+
+  .transactions-table{
+    min-width:600px;
+  }
+}

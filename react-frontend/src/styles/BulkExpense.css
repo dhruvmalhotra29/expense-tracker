@@ -100,7 +100,7 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 15px;
-    font-weight: 600px;
+    font-weight: 600;
     margin-left: 8px;
     transition: background-color 0.2s ease, transform 0.1s ease;
 }
@@ -154,4 +154,20 @@
 
 .preview-table tr:hover {
   background-color: #f1f7ff;
+}
+
+@media (max-width:768px){
+  .upload-row{
+    flex-direction:column;
+  }
+
+  .bulk-card h3{
+    font-size:22px;
+  }
+
+  .upload-btn,
+  .template-btn{
+    width:100%;
+    max-width:280px;
+  }
 }
