@@ -340,3 +340,135 @@
     min-width:700px;
   }
 }
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+
+  .expenses-page {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  .expenses-page h2 {
+    color: #818cf8;
+  }
+
+  /* table wrapper */
+  .table-wrapper {
+    border: 1px solid #334155;
+  }
+
+  /* table */
+  .expenses-table {
+    color: #e2e8f0;
+  }
+
+  .expenses-table thead {
+    background: #6366f1;
+  }
+
+  .expenses-table th,
+  .expenses-table td {
+    border-bottom: 1px solid #334155;
+    border-right: 1px solid #334155;
+  }
+
+  .expenses-table tbody tr:nth-child(even) {
+    background: #1e293b;
+  }
+
+  .expenses-table tbody tr:hover {
+    background: #2b3a55;
+  }
+
+  /* buttons */
+  .download-btn {
+    background: #22c55e;
+  }
+
+  .download-btn:hover {
+    background: #16a34a;
+  }
+
+  .edit-btn {
+    background: #3b82f6;
+  }
+
+  .edit-btn:hover {
+    background: #2563eb;
+  }
+
+  .delete-btn {
+    background: #ef4444;
+  }
+
+  .delete-btn:hover {
+    background: #dc2626;
+  }
+
+  /* modal */
+  .modal {
+    background: #1e293b;
+    color: #e2e8f0;
+  }
+
+  .modal .form-group label {
+    color: #cbd5f5;
+  }
+
+  .modal .form-group input,
+  .modal .form-group select {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .modal .form-group input:focus,
+  .modal .form-group select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 2px rgba(129,140,248,0.2);
+  }
+
+  .modal-close {
+    color: #e2e8f0;
+  }
+
+  /* pagination */
+  .pagination button {
+    background: #6366f1;
+  }
+
+  .pagination button:disabled {
+    background: #475569;
+  }
+
+  /* filters */
+  .filters input,
+  .filters select {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .filters input:focus,
+  .filters select:focus {
+    border-color: #818cf8;
+  }
+
+  .filter-group label {
+    color: #cbd5f5;
+  }
+
+  /* scrollbar */
+  .table-wrapper::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: #475569;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+}

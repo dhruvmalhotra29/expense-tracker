@@ -92,3 +92,46 @@ button:disabled {
     flex-direction: column;
   }
 }
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+
+  .form-page {
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+
+  .form-field label {
+    color: #cbd5f5;
+  }
+
+  .form-field input,
+  .form-field select {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 2px rgba(129,140,248,0.2);
+    outline: none;
+  }
+
+  button {
+    background: #6366f1;
+  }
+
+  button:hover {
+    background: #4f46e5;
+  }
+
+  button:disabled {
+    background: #475569;
+  }
+
+  .error-message {
+    color: #f87171;
+  }
+}

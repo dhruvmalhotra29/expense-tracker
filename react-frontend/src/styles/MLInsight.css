@@ -109,3 +109,57 @@
     font-size:28px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+
+  .ml-page {
+    background: #0f172a;
+    color: #e2e8f0;
+  }
+
+  .ml-header {
+    color: #e2e8f0;
+  }
+
+  .ml-card {
+    background: #1e293b;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  }
+
+  .ml-card h3 {
+    color: #cbd5f5;
+  }
+
+  .ml-card p {
+    color: #94a3b8;
+  }
+
+  .ml-card h1 {
+    color: #22c55e;
+  }
+
+  /* alert card */
+  .alert-card {
+    background: #2b1f1f;
+    border-left: 5px solid #ef4444;
+  }
+
+  /* page message */
+  .page-message {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .page-message.error {
+    background: #2b1f1f;
+    border-color: #7f1d1d;
+    color: #f87171;
+  }
+
+  .page-message.empty {
+    background: #1e293b;
+    color: #94a3b8;
+  }
+
+}

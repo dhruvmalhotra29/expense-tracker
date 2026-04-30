@@ -285,3 +285,100 @@
     margin-left:0;
   }
 }
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+
+  .dashboard-container {
+    background: linear-gradient(120deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+  }
+
+  .dashboard-container h1 {
+    color: #e2e8f0;
+  }
+
+  /* cards */
+  .dashboard-card {
+    background: #1e293b;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  }
+
+  .dashboard-card:hover {
+    background: linear-gradient(135deg, #1e293b, #2b3a55);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+  }
+
+  .dashboard-card h3 {
+    color: #818cf8;
+  }
+
+  .dashboard-card p {
+    color: #94a3b8;
+  }
+
+  /* avatar */
+  .profile-avatar-btn {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .profile-avatar-btn:hover {
+    background: #334155;
+  }
+
+  /* dropdown */
+  .profile-dropdown {
+    background: #1e293b;
+    border: 1px solid #334155;
+  }
+
+  .profile-dropdown-item {
+    color: #e2e8f0;
+  }
+
+  .profile-dropdown-item:hover {
+    background: #334155;
+  }
+
+  .profile-username {
+    color: #e2e8f0;
+    border-bottom: 1px solid #334155;
+  }
+
+  .profile-edit,
+  .profile-logout {
+    color: #e2e8f0;
+  }
+
+  .profile-edit:hover,
+  .profile-logout:hover {
+    background: #334155;
+  }
+
+  /* chart */
+  .chart-header h3 {
+    color: #e2e8f0;
+  }
+
+  .year-filter label {
+    color: #cbd5f5;
+  }
+
+  .year-filter select {
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+  }
+
+  .year-filter select:hover {
+    border-color: #818cf8;
+  }
+
+  /* scrollbar */
+  .dashboard-cards::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+  }
+
+}

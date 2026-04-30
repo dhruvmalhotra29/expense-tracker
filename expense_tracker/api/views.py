@@ -175,7 +175,15 @@ class DashboardView(APIView):
 
         year = request.query_params.get("year")
         if not year:
-            year = datetime.now().year
+            latest_year = (
+                Expense.objects
+                .filter(user=request.user)
+                .annotate(year=ExtractYear('date'))
+                .values_list('year', flat=True)
+                .order_by('-year')
+                .first()
+            )
+            year = latest_year
             
         year = int(year)
 

@@ -18,7 +18,7 @@ function App(){
 
   return (
     <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer theme="auto"/>
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route element={<PrivateRoute><><ProfileMenu /><Outlet /></></PrivateRoute>} >

@@ -29,3 +29,22 @@
 .table-message.empty {
   color: #777;
 }
+
+@media (prefers-color-scheme: dark){
+  .chart-message,
+  .table-message{
+    background:#1e293b;
+    border-color:#475569;
+    color:#e2e8f0;
+  }
+
+  .chart-message.empty,
+  .table-message.empty{
+    color:#cbd5e1;
+  }
+
+  .chart-message.error,
+  .table-message.error{
+    color:#f87171;
+  }
+}
