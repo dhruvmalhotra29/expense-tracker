@@ -31,8 +31,11 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgres://testuser:testpass@localhost:5432/testdb
+      ENV: test
+      TEST_DATABASE_URL: postgres://testuser:testpass@localhost:5432/testdb
       SECRET_KEY: github-ci-secret-key
+      TEST_ALLOWED_HOSTS: localhost,127.0.0.1
+      TEST_CORS_ALLOWED_ORIGINS: http://localhost:5173
 
     steps:
       - name: Checkout code

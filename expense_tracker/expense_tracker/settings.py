@@ -33,10 +33,15 @@ if ENV == "production":
     CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS").split(",")  # React dev port
     DATABASE_URL = os.getenv("DATABASE_URL")
 
-else:
+elif ENV == "local":
     ALLOWED_HOSTS = os.getenv("LOCAL_ALLOWED_HOSTS").split(",")
     CORS_ALLOWED_ORIGINS = os.getenv("LOCAL_CORS_ALLOWED_ORIGINS").split(",")  # React dev port
     DATABASE_URL = os.getenv("LOCAL_DATABASE_URL")
+
+else:
+    ALLOWED_HOSTS = os.getenv("TEST_ALLOWED_HOSTS").split(",")
+    CORS_ALLOWED_ORIGINS = os.getenv("TEST_CORS_ALLOWED_ORIGINS").split(",")  # React dev port
+    DATABASE_URL = os.getenv("TEST_DATABASE_URL")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
