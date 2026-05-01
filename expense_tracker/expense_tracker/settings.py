@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import dj_database_url
 import os
+
+# Load .env from project root
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,19 +26,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+ENV = os.getenv("ENV","local")
+
+if ENV == "production":
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+    CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS").split(",")  # React dev port
+    DATABASE_URL = os.getenv("DATABASE_URL")
+
+else:
+    ALLOWED_HOSTS = os.getenv("LOCAL_ALLOWED_HOSTS").split(",")
+    CORS_ALLOWED_ORIGINS = os.getenv("LOCAL_CORS_ALLOWED_ORIGINS").split(",")  # React dev port
+    DATABASE_URL = os.getenv("LOCAL_DATABASE_URL")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS","localhost,127.0.0.1").split(",")
-#ALLOWED_HOSTS = ["127.0.0.1","localhost"]
-
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS","http://localhost:5173").split(",")
-  # React dev port
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,11 +103,6 @@ WSGI_APPLICATION = 'expense_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-from dotenv import load_dotenv
-import dj_database_url
-
-# Load .env from project root
-load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -111,12 +115,6 @@ DATABASES = {
 #    'default': dj_database_url.config(
 #        default='postgres://postgres:@localhost:5432/expense_db'
 #    )
-#}
-
-#REDIS_CONFIG = {
-#    "HOST": "127.0.0.1",
-#    "PORT": 6379,
-#    "DB": 0,
 #}
 
 #LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")

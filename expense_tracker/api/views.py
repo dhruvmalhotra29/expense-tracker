@@ -20,14 +20,6 @@ import json
 import csv
 import logging
 
-
-
-#redis_client = redis.Redis(
-#    host = settings.REDIS_CONFIG['HOST'],
-#    port = settings.REDIS_CONFIG['PORT'],
-#    db = settings.REDIS_CONFIG['DB'],
-#)
-
 # Create a logger for this view
 logger = logging.getLogger(__name__)
 
