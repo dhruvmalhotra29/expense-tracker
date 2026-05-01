@@ -18,7 +18,7 @@ function App(){
 
   return (
     <BrowserRouter>
-      <ToastContainer theme="auto"/>
+      <ToastContainer theme="auto" toastStyle={{ fontSize: "0.9rem", padding: "10px"}} style={{width: "fit-content", maxWidth: "90vw"}}/>
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route element={<PrivateRoute><><ProfileMenu /><Outlet /></></PrivateRoute>} >
