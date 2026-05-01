@@ -176,6 +176,9 @@ class DashboardView(APIView):
                 .first()
             )
             year = latest_year
+
+        if not year:
+            year = datetime.now().year
             
         year = int(year)
 
