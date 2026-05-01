@@ -113,7 +113,8 @@ WSGI_APPLICATION = 'expense_tracker.wsgi.application'
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 DATABASES = {
-    "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
+    "default": dj_database_url.parse(
+        DATABASE_URL)
 }
 
 #DATABASES = {
