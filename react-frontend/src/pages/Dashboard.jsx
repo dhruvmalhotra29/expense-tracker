@@ -14,7 +14,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const [dashboard_data, setDashboardData] = useState(null);
   const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear] = useState(null);
+  const [selectedYear, setSelectedYear] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -41,7 +41,6 @@ function Dashboard() {
   }, [])
 
   useEffect(() => {
-    if(!selectedYear) return;
     const fetchDashboard = async () => {
       console.log("Fetching Dashboard data....");
       try{
