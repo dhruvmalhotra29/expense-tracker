@@ -129,20 +129,10 @@ function Dashboard() {
             <p>AI-powered insights about your spending patterns</p>
           </div>
       </div>
-
-        <EmptyState message="No expenses found yet" />
-      </div>
-    );
-  }
-
-  if(!dashboard_data){
-
-      return (
-      <div className="dashboard-container">
-        <div className="dashboard-topbar">
-          <h1>Expense Tracker dashboard</h1>
+        <div style={{ textAlign: "center", marginTop: "40px", fontStyle: "italic" }}>
+          <h2>No expenses found yet</h2>
+          <p>Add your first expense to see your dashboard</p>
         </div>
-        <EmptyState message="No dashboard data available" />
       </div>
     );
   }
