@@ -78,6 +78,12 @@ The application follows a decoupled architecture where the React frontend commun
 
 ---
 
+## Run Locally (Optional)
+
+Clone the repository and configure environment variables for backend and frontend services. Ensure PostgreSQL is running and Redis is started via Docker before launching the application.
+
+---
+
 ## Demo
 
 Add your Google Drive / video link here
