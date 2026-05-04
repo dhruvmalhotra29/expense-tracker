@@ -86,4 +86,6 @@ Clone the repository and configure environment variables for backend and fronten
 
 ## Demo
 
-Add your Google Drive / video link here
+Project Walkthrough Video: *Coming soon*
+
+[Live Application](https://expense-tracker-xi-navy.vercel.app/)
