@@ -53,7 +53,7 @@ Authentication: JWT
 
 ## System Design Overview
 
-The application follows a decoupled architecture where the React frontend communicates with Django REST APIs. PostgreSQL is used for persistent storage, while Redis is containerized using Docker for caching and session management. Machine learning models process historical expense data to generate predictions, while rule-based logic provides real-time financial insights.
+The application follows a decoupled architecture where the React frontend communicates with Django REST APIs. PostgreSQL is used for persistent storage, while Redis is containerized using Docker for caching ML-generated insights and improving response performance. Machine learning models process historical expense data to generate predictions, while rule-based logic provides real-time financial insights.
 
 ---
 
