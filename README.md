@@ -89,3 +89,5 @@ Clone the repository and configure environment variables for backend and fronten
 Project Walkthrough Video: *Coming soon*
 
 [Live Application](https://expense-tracker-xi-navy.vercel.app/)
+
+Login credentials can be shared upon request for evaluation.
