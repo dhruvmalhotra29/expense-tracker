@@ -4,22 +4,16 @@ from django.db.models import Sum, Avg
 from django.db.models.functions import TruncMonth
 from sklearn.linear_model import LinearRegression
 from ..models import Expense
-from django.conf import settings
 import json
 import numpy as np
 import calendar
 from .redis_client import redis_client
-#import redis
 import logging
 
 logger = logging.getLogger(__name__)
 
-#redis_client = redis.Redis(
- #                   host=settings.REDIS_CONFIG['HOST'],
-  #                  port=settings.REDIS_CONFIG['PORT'],
-   #                 db=settings.REDIS_CONFIG['DB'],)
-
 def get_expense_prediction(user):
+
     data = (
         Expense.objects
         .filter(user=user)
@@ -29,45 +23,30 @@ def get_expense_prediction(user):
         .order_by("month")
     )
 
-    months, totals = [], []
+    if len(data) < 2:
+        return {"message": "Not enough data for prediction"}
 
-    for item in data:
-        months.append(item["month"].month)
-        totals.append(item["total"] or 0)
+    # build continuous time series
+    totals = [item["total"] or 0 for item in data]
 
-    if len(months) < 2:
-        return {"message":"Not enough data for prediction"}
-    
-    last_expense = Expense.objects.filter(user=user).order_by("-date").first()
-    
-    if not last_expense:
-        return {"message":"No data available"}
-        
-    last_month_num = last_expense.date.month 
-    last_month_year = last_expense.date.year
-
-    if last_month_num == 12:
-        next_month_year = last_month_year + 1
-    else:
-        next_month_year = last_month_year
-
-    month_in_year = last_month_num % 12 + 1  # next month number in 1–12
-
-    X = np.array(months).reshape(-1,1)
+    X = np.arange(len(totals)).reshape(-1, 1)
     y = np.array(totals)
 
     model = LinearRegression()
-    model.fit(X,y)
+    model.fit(X, y)
 
-    next_month_name = calendar.month_name[month_in_year]
-    prediction = model.predict(np.array([[last_month_num + 1]]))  # keep X consistent
-    
+    prediction = model.predict([[len(totals)]])
+
+    last_date = data[-1]["month"]
+    next_month = (last_date.month % 12) + 1
+    next_year = last_date.year + (1 if next_month == 1 else 0)
+
     return {
-        "month": next_month_name,
-        "year": next_month_year,
-        "predicted_expense": float(round(prediction[0],2))
+        "month": calendar.month_name[next_month],
+        "year": next_year,
+        "predicted_expense": float(round(prediction[0], 2))
     }
-    
+
 def get_spending_trend(user):
 
     today = timezone.now().date()
@@ -92,12 +71,19 @@ def get_spending_trend(user):
             )
 
     if last_month_total == 0:
-        percentage_change = 0
+        percentage_change = 100 if current_month_total > 0 else 0
 
     else:
         percentage_change = ((current_month_total - last_month_total) / last_month_total) * 100
 
-    trend = "increase" if percentage_change > 0 else "decrease"
+    if percentage_change > 0:
+        trend = "increase"
+
+    elif percentage_change < 0:
+        trend = "decrease"
+
+    else:
+        trend = "no change"
 
     return {
         "current_month_total": float(current_month_total),
@@ -106,11 +92,11 @@ def get_spending_trend(user):
         "trend":trend
     }
 
-
 def get_overspending_alert(user):
 
     today = timezone.now().date()
     three_months_ago = today - timedelta(days=90)
+    start_current_month = timezone.now().date().replace(day=1)
 
     categories = (
         Expense.objects
@@ -126,7 +112,7 @@ def get_overspending_alert(user):
             Expense.objects.filter(
                 user=user,
                 category=category["category"],
-                date__month = timezone.now().month
+                date__gte = start_current_month
             ).aggregate(total=Sum("amount"))["total"] or 0
         )
 
