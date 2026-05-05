@@ -21,10 +21,8 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchYears = async () => {
-      console.log("Fetching avaialble years bar graph filtering...");
       try {
         const res = await api.get("expenses/available-years/");
-        console.log("Available years fetched for dashboard:  ",res.data);
         setYears(res.data);
 
         if(res.data.length > 0){
@@ -42,10 +40,8 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchDashboard = async () => {
-      console.log("Fetching Dashboard data....");
       try{
         const res = await api.get(`/dashboard/?year=${selectedYear}`);
-        console.log("Dashboard data fetched successfully: ");
         setDashboardData(res.data);
         setError(false);
       } catch (err) {
@@ -62,7 +58,6 @@ function Dashboard() {
   
 
   if (loading) {
-    console.log("Loading Dashboard data...");
     return (
       <div className="dashboard-container">
         <div className="dashboard-topbar">

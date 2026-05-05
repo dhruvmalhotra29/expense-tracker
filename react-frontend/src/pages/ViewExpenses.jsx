@@ -47,7 +47,6 @@ function ViewExpenses()
                     ...(debouncedSearch && { search: debouncedSearch }),
                 };
             const res = await api.get("/expenses/",{params});
-                console.log(res.data)
                 setExpenses(res.data.results);
                 setTotalPages(Math.max(1,Math.ceil(res.data.count / 15))); // same as PAGE_SIZE
             }

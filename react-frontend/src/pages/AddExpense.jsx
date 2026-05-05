@@ -60,7 +60,6 @@ function AddExpense(){
 
         try{
             setIsSubmit(true);
-            console.log("Submitting expense details...",formData);
             await api.post("/expenses/",formData);
             toast.success("Expense added successfully!")
 

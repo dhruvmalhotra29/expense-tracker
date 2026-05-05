@@ -15,8 +15,7 @@ const COLORS = [
 
 function MonthlyExpenseChart({ data }){
 
-    console.log("bar chart re render");
-
+   
     if(!data?.length){
         return <EmptyState message="No monthly expense data available" />
     }

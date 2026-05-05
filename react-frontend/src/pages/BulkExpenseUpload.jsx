@@ -67,12 +67,10 @@ function BulkExpenseUpload(){
         setLoading(true);
 
         try{
-            console.log("Sending bulk data through api to db");
             const res = await api.post("/expenses/bulk/", preview)
             toast.success(
                 `Success: ${res.data.success.length}, Failed: ${res.data.failed.length}`
             );
-            console.log("Response:",res.data);
             setFile(null);
             setPreview([]);
             if(fileInputRef.current){
