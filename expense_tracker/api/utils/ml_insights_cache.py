@@ -37,7 +37,7 @@ def get_expense_prediction(user):
 
     prediction = model.predict([[len(totals)]])
 
-    last_date = data[-1]["month"]
+    last_date = data.order_by("-month").first()["month"]
     next_month = (last_date.month % 12) + 1
     next_year = last_date.year + (1 if next_month == 1 else 0)
 
