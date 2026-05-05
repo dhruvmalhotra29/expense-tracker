@@ -11,7 +11,7 @@ function ExpensePieChart({ data }){
 
     return (
     <div style={{width:500}}>
-        <h2>Category Summary</h2>
+        <h2>Category Summary (Overall)</h2>
 
         <PieChart width={550} height={400}  margin={{ top: 170, right: 10, bottom: 30, left: 70 }}>
         <Pie
