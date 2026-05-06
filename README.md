@@ -80,8 +80,11 @@ The application follows a decoupled architecture where the React frontend commun
 
 ## Run Locally (Optional)
 
-Clone the repository and configure environment variables for backend and frontend services. Ensure PostgreSQL is running and Redis is started via Docker before launching the application.
+Clone the repository and configure environment variables for backend and frontend services.
 
+Ensure PostgreSQL is running and Redis is started via Docker before launching the application.
+
+Create a .env file with required configuration variables.
 ---
 
 ## Demo
