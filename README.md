@@ -98,6 +98,6 @@ Login credentials can be shared for the evaluation process if required.
 
 ---
 
-## Authors
+## Author
 
 - [@dhruvmalhotra29](https://www.github.com/dhruvmalhotra29)
