@@ -86,6 +86,8 @@ Ensure PostgreSQL is running and Redis is started via Docker before launching th
 
 Create a .env file with required configuration variables.
 
+(Optional) Create and activate a virtual environment before installing dependencies.
+
 ## Demo
 
 Project Walkthrough Video: *Coming soon*
