@@ -91,3 +91,11 @@ jobs:
         run: |
           cd react-frontend
           npm run build
+
+  deploy:
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy to Vercel
+      run: curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
