@@ -95,3 +95,9 @@ Project Walkthrough Video: *Coming soon*
 [Live Application](https://expense-tracker-xi-navy.vercel.app/)
 
 Login credentials can be shared for the evaluation process if required.
+
+---
+
+## Authors
+
+- [@dhruvmalhotra29](https://www.github.com/dhruvmalhotra29)
