@@ -85,7 +85,6 @@ Clone the repository and configure environment variables for backend and fronten
 Ensure PostgreSQL is running and Redis is started via Docker before launching the application.
 
 Create a .env file with required configuration variables.
----
 
 ## Demo
 
