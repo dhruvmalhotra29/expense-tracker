@@ -119,7 +119,7 @@ function Dashboard() {
             <p>Upload csv file to add multiple expenses</p>
           </div>
 
-          <div className ="dashboard-card" onClick={() => navigate("/ml-insights")}>
+          <div className ="dashboard-card" onClick={() => navigate("/smart-insights")}>
             <h3>Smart Insights</h3>
             <p>AI-powered insights about your spending patterns</p>
           </div>
@@ -155,7 +155,7 @@ function Dashboard() {
           <p>Upload csv file to add multiple expenses</p>
         </div>
 
-        <div className ="dashboard-card" onClick={() => navigate("/ml-insights")}>
+        <div className ="dashboard-card" onClick={() => navigate("/smart-insights")}>
           <h3>Smart Insights</h3>
           <p>AI-powered insights about your spending patterns</p>
         </div>

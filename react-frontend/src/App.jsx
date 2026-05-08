@@ -26,7 +26,7 @@ function App(){
           <Route path="/view-expenses" element={<ViewExpenses />}/>
           <Route path="/add-expense" element={<AddExpense />}/>
           <Route path="/add-bulk-expense" element={<BulkExpenseUpload />} />
-          <Route path="/ml-insights" element={<MLInsightPage />} />
+          <Route path="/smart-insights" element={<MLInsightPage />} />
           <Route path="edit-profile" element={<ProfilePage />}></Route>
         </Route>
         <Route path="*" element={<NotFound />}/>
