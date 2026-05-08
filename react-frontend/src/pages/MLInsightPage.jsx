@@ -53,7 +53,7 @@ function MLInsightPage() {
     if (loading){
         return (
             <div className="ml-page">
-                <h2 className="ml-header">ML Insights</h2>
+                <h2 className="ml-header">Smart Insights</h2>
                 <div className="ml-grid-2x2">
                     <InsightCardPlaceholder type="prediction" />
                     <InsightCardPlaceholder type="trend" />
@@ -68,7 +68,7 @@ function MLInsightPage() {
         console.error("ML Insight Page rendering error: Failed to load page");
         return (
         <div className="ml-page">
-            <h2 className="ml-header">ML Insights</h2>
+            <h2 className="ml-header">Smart Insights</h2>
             <div className="page-message-error">
                 Failed to load ML Insights
             </div>
@@ -78,7 +78,7 @@ function MLInsightPage() {
 
     return (
         <div className="ml-page">
-            <h2 className="ml-header">ML Insights</h2>
+            <h2 className="ml-header">Smart Insights</h2>
             
 
             <div className="ml-grid-2x2">
