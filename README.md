@@ -90,7 +90,7 @@ Create a .env file with required configuration variables.
 
 ## Demo
 
-Project Walkthrough Video: *Coming soon*
+Project Walkthrough Video: [Watch Here](https://drive.google.com/file/d/1wE5YefQh8l_aBs1aFb_hX0ZaFk4RTppE/view?usp=drive_link)
 
 [Live Application](https://expense-tracker-xi-navy.vercel.app/)
 
