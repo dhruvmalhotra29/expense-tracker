@@ -117,13 +117,6 @@ DATABASES = {
         DATABASE_URL)
 }
 
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        default='postgres://postgres:@localhost:5432/expense_db'
-#    )
-#}
-
-#LOG_FILE = os.path.join(BASE_DIR, "expense_tracker_logs.log")
 
 LOGGING = {
     "version": 1,
